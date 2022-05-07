@@ -1,0 +1,54 @@
+body {
+    background: #2b2b2b;
+    margin: 10px;
+    padding: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    transition: 0.5s;
+}
+
+h1 {
+    width: 100%;
+    position: left;
+    font-size: 1.8rem;
+    color: rgb(9, 127, 196);
+    font-weight: 600;
+    padding: 8px 0px;
+}
+
+h4 {
+    width: 100%;
+    text-align: justify;
+    position: left;
+    font-size: 1.8rem;
+    color: rgb(184, 213, 230);
+    font-weight: 600;
+    padding: 8px 0px;
+}
+
+p {
+    position: left;
+    color: rgb(184, 213, 230);
+    overflow-wrap: break-word;
+}
+
+label {
+    position: left;
+    background-color: #2b2b2b;
+    color: rgb(184, 213, 230);
+}
+
+input {
+    position: left;
+    background-color: #2b2b2b;
+    color: rgb(184, 213, 230);
+}
+
+input[type="submit"] {
+    background-color: #b94d4d;
+    color: rgb(184, 213, 230);
+}
+
+button {
+    background-color: #b94d4d;
+    color: rgb(184, 213, 230);
+}

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="script.js">
+    <title>Tema 2</title>
+</head>
+
+<body>
+    <h1>Curs SV 2022 - tema 2</h1>
+    <br>
+    <a href="page2.html">Varianta de rezolvare pur script a temelor</a>
+    <div>
+        <h4>Punctul 1</h4>
+        <p>Creați o funcție care primește ca și parametru un număr și returnează dublul său dacă numărul primit este
+            impar, altfel returnează numărul scăzut cu 2 dacă este par. Afișați rezultatul în consolă.
+        </p>
+        <label for="nrC">Introduceti un numar: </label>
+        <input type="number" id="nrC"><br><br>
+        <button type="button" onclick="par_impar()">Aplica</button>
+        <p id="show"></p>
+        <script>
+            function par_impar() {
+                let numarComparat = document.getElementById("nrC").value;
+                if (numarComparat % 2 === 0) {
+                    document.getElementById("show").innerHTML = (`Numarul " ${numarComparat} " este par, deci din ${numarComparat} se va scadea 2 = ` + (numarComparat -= 2));
+                    return console.log(numarComparat);
+                } else if (numarComparat % 2 === 1) {
+                    document.getElementById("show").innerHTML = (`Numarul " ${numarComparat} " este impar, deci ${numarComparat} va fi inmultit cu 2 = ` + (numarComparat *= 2));
+                    return console.log(numarComparat);
+                }
+            }
+        </script>
+    </div>
+    <div>
+        <h4>Punctul 2</h4>
+        <p>Creați o funcție care stochează intr-un array doar numerele prime dintr-un array primit ca si parametru.
+            Parcurgeți array-ul folosind un “for loop”. Afișați rezultatul în consola.
+        </p>
+        <p>Pornim de la premiza ca array-ul va incepe de la 1 si se va extinde pana la un numar introdus de utilizator.
+            Astfel se vor afisa toate numerele prime cuprinse intre 1 si numarul introdus de utilizator.
+        </p>
+        <label for="arrayLenght">Pana la care numar doriti sa se intinda array-ul: </label>
+        <input type="number" id="arrayLenght"><br><br>
+        <button type="button" onclick="createArray()">Aplica</button>
+        <p id="showArrayLenght"></p>
+        <p id="showArray"></p>
+        <p id="showPrimeNumbers"></p>
+        <script>
+            function createArray(arrayLenght, startAt = 1) {
+                let arraySize = document.getElementById("arrayLenght").value;
+                document.getElementById("showArrayLenght").innerHTML = (`Array-ul va cuprinde toate numerele intre 1 si " ${arraySize}."`);
+                let myArray = [];
+                for (let i = 1; i <= arraySize; i++) {
+                    myArray.push(i);
+                }
+                console.log(myArray);
+                document.getElementById("showArray").innerHTML = (`Array-ul va fi: ${myArray}.`);
+                function primeNumbers(myArray) {
+                    let savePrimes = [];
+                    function isPrimeNumber(myArrayElement) {
+                        if (myArrayElement <= 1) {
+                            console.log(myArrayElement + " not valid as a prime number!");
+                        }
+                        for (let x = 2; x < myArrayElement; x++) {
+                            if (myArrayElement % x === 0) {
+                                return false;
+                            }
+                        }
+                        return true;
+                    }
+                    for (let y = 0; y <= myArray.length - 1; y++) {
+                        if (isPrimeNumber(myArray[y])) {
+                            savePrimes.push(myArray[y]);
+                        }
+                    }
+                    console.log(savePrimes);
+                    document.getElementById("showPrimeNumbers").innerHTML = (`Numerele prime sunt: ${savePrimes}.`);
+                }
+                primeNumbers(myArray);
+            }
+        </script>
+    </div>
+    <div>
+        <h4>Punctul 3</h4>
+        <p>Creați o funcție care stochează intr-un array doar strings dintr-un array primit ca si parametru. Parcurgeți
+            array-ul folosind “forEach”. Afișați rezultatul în consola.
+        </p>
+        <p>Utilizatorul poate introduce secvential orice fel de text, care se vor stoca intr-un array, care va fi
+            ulterior sortat si va rezulta un array nou care va contine doar elemente de tip string.
+        </p>
+        <p>Array-ul va fi populat de la inceput cu urmatoarele elemente: 1, "1", "salut", 2, 6, true, "true". La acestea
+            se vor adauga cele introduse secvential de utilizator.
+        </p>
+        <p>Din pacate cu putina mea experienta de programare nu stiu cum sa adaug intr-un array variabile de tip
+            diferit... (boolean, string, number, null, etc.)
+        </p>
+        <label for="addToArray">Introduceti un nou element care va fi adaugat la array: </label>
+        <input id="addToArray"><br><br>
+        <button type="button" onclick="addToArray()">Adauga la array:</button>
+        <p id="showStartArray"></p>
+        <p id="showStringOnlyArray"></p>
+        <script>
+            const givenArray = [1, "1", "salut", 2, 6, false, "true"];
+            let saveStrings = [];
+            function addToArray() {
+                givenArray.push(document.getElementById("addToArray").value)
+                console.log(givenArray);
+                document.getElementById("showStartArray").innerHTML = (`Array-ul cuprinde in acest moment urmatoarele elemente: " ${givenArray}."`);
+                givenArray.forEach(function (item) {
+                    if (typeof item === 'string') {
+                        saveStrings.push(item);
+                    }
+                })
+                console.log(saveStrings);
+                document.getElementById("showStringOnlyArray").innerHTML = (`Array-ul care cuprinde doar stringuri are urmatoarele elemente: " ${saveStrings}."`);
+                saveStrings = [];
+            }
+
+        </script>
+        <!-- Boolean type.
+        Null type.
+        Undefined type.
+        Number type.
+        BigInt type.
+        String type.
+        Symbol type. -->
+    </div>
+    <div>
+        <h4>Punctul 4</h4>
+        <p>Creați o funcție care adună cifrele impare ale unui număr primit ca și parametru de tip string folosind “for
+            loop” si keyword-ul “continue”.
+        </p>
+        <label for="addDigits">Introduceti un numar: </label>
+        <input type="number" id="addDigits"><br><br>
+        <button type="button" onclick="addDigits()">Aplica</button>
+        <p id="sumOfOdd"></p>
+        <script>
+            function addDigits() {
+                let digitArray = document.getElementById("addDigits").value;
+                document.getElementById("addDigits").innerHTML = Array.from(digitArray);
+                console.log(digitArray);
+                let sumDigits = 0;
+                for (let x = 0; x < digitArray.length; x++) {
+                    if (Number(digitArray[x] % 2 == 0)) {
+                        continue;
+                    } else if (Number(digitArray[x] % 2 == 1)) {
+                        sumDigits += Number(digitArray[x]);
+                        console.log(sumDigits);
+                    }
+                    document.getElementById("sumOfOdd").innerHTML = (`Suma cifrelor impare este: " ${sumDigits} "`);
+                }
+            }
+        </script>
+    </div>
+    <div>
+        <h4>Punctul 5</h4>
+        <p>Creați un switch cu cel puțin 5 case-uri din care cel puțin 2 să aibă același rezultat, după exemplul
+            prezentat la curs.
+        </p>
+        <label for="textInput">Introduceti un text: </label>
+        <input type="text" id="textInput"><br><br>
+        <button type="button" onclick="textInputFunction()">Aplica</button>
+        <p id="lenghtCase"></p>
+        <script>
+            function textInputFunction() {
+                let textInput = document.getElementById("textInput").value;
+                switch (textInput.length) {
+                    case 1:
+                    case 2:
+                        document.getElementById("lenghtCase").innerHTML = (`Textul '${textInput}' are lungimea de 1 sau 2 caractere.`);
+                        break;
+                    case 3:
+                        document.getElementById("lenghtCase").innerHTML = (`Textul '${textInput}' are lungimea de 3 caractere.`);
+                        break;
+                    case 4:
+                        document.getElementById("lenghtCase").innerHTML = (`Textul '${textInput}' are lungimea de 4 caractere.`);
+                        break;
+                    case 5:
+                        document.getElementById("lenghtCase").innerHTML = (`Textul '${textInput}' are lungimea de 5 caractere.`);
+                        break;
+                    case 6:
+                        document.getElementById("lenghtCase").innerHTML = (`Textul '${textInput}' are lungimea de 6 caractere.`);
+                        break;
+                    case 7:
+                        document.getElementById("lenghtCase").innerHTML = (`Textul '${textInput}' are lungimea de 7 caractere.`);
+                        break;
+                    case 8:
+                        document.getElementById("lenghtCase").innerHTML = (`Textul '${textInput}' are lungimea de 8 caractere.`);
+                        break;
+                    case 9:
+                        document.getElementById("lenghtCase").innerHTML = (`Textul '${textInput}' are lungimea de 9 sau mai multe caractere.`);
+                        break;
+                    default:
+                        document.getElementById("lenghtCase").innerHTML = (`Textul '${textInput}' are lungimea de 0  caractere.`);
+                        break;
+                }
+            }
+        </script>
+    </div>
+</body>
+
+</html>
